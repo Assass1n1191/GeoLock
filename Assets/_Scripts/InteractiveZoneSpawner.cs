@@ -1,27 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
-using UnityEngine.UI;
-using Mapbox.Map;
-
 using Mapbox.Unity.Map;
 using Mapbox.Unity.Utilities;
-using Mapbox.Utils;
-using Mapbox.Examples.LocationProvider;
-using Mapbox.Unity.Location;
-
 
 public class InteractiveZoneSpawner : MonoBehaviour 
 {
     [SerializeField] private AbstractMap _map;
     public GameObject InteractiveZonePrefab;
 
-    private List<InteractiveZone> _interactiveZones;
+    public List<InteractiveZone> InteractiveZones;
 
 	private void Awake () 
 	{
-        _interactiveZones = new List<InteractiveZone>();
+        //InteractiveZones = new List<InteractiveZone>();
 
     }
 
@@ -32,10 +23,10 @@ public class InteractiveZoneSpawner : MonoBehaviour
 
     private void InitDefaultZones()
     {
-        _interactiveZones.Add(new InteractiveZone(49.443733, 32.056695, 100f)); //BidOn
-        _interactiveZones.Add(new InteractiveZone(49.44333, 32.05922, 0f)); //Ferma
+        //InteractiveZones.Add(new InteractiveZone(0, 49.443733, 32.056695, 100f)); //BidOn
+        //InteractiveZones.Add(new InteractiveZone(1, 49.44333, 32.05922, 0f)); //Ferma
 
-        foreach (var zone in _interactiveZones)
+        foreach (var zone in InteractiveZones)
         {
             SpawnInteractiveZone(zone);
         }

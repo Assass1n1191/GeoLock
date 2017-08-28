@@ -292,7 +292,7 @@ Transform:
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1934621224}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &354925212
 MeshRenderer:
@@ -334,7 +334,7 @@ BoxCollider:
   m_GameObject: {fileID: 354925210}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -607,7 +607,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1934621224}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!1 &728746476
 GameObject:
@@ -638,7 +638,7 @@ Transform:
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 1934621224}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!23 &728746478
 MeshRenderer:
@@ -762,7 +762,7 @@ SphereCollider:
   m_GameObject: {fileID: 861306795}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -801,10 +801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c64bacb6f5dfa04498dd21aefc04d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResultText: {fileID: 1709203927}
-  CurrentPosition: {fileID: 2014334103}
-  editorLocationProvider: {fileID: 1628209262}
-  deviceLocationProvider: {fileID: 1098163516}
 --- !u!4 &993173523
 Transform:
   m_ObjectHideFlags: 0
@@ -832,6 +828,28 @@ MonoBehaviour:
   _map: {fileID: 114606471}
   InteractiveZonePrefab: {fileID: 1971001414548158, guid: 723df63b61ead9840b774c11b6de823b,
     type: 2}
+  InteractiveZones:
+  - Id: 0
+    Name: BidOn Tech
+    Latitude: 49.443733
+    Longtitude: 32.056695
+    Rotation: 100
+    Description: IT-Company
+    Model: {fileID: 100000, guid: 94e8b543ccfce214cbe3536377799049, type: 3}
+  - Id: 1
+    Name: Ferma
+    Latitude: 49.44333
+    Longtitude: 32.05922
+    Rotation: 0
+    Description: Cafe
+    Model: {fileID: 100000, guid: b635153924a26964a8ff847ab96f7af7, type: 3}
+  - Id: 2
+    Name: Lubava
+    Latitude: 49.445436
+    Longtitude: 32.056728
+    Rotation: 100
+    Description: Shop Center
+    Model: {fileID: 100000, guid: 3efdfb47275bdf54583ae191f1a4ef7a, type: 3}
 --- !u!224 &1009689356 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000013044306136, guid: 3adcee2515f8c49f4a7afb3bacf2c56e,
@@ -1095,9 +1113,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 580608875}
   - {fileID: 728746477}
   - {fileID: 354925211}
-  - {fileID: 580608875}
   - {fileID: 861306796}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1121,7 +1139,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1934621221}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1.25
   m_Height: 5.25
   m_Direction: 1
