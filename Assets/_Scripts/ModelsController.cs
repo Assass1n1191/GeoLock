@@ -6,18 +6,12 @@ public class ModelsController : MonoBehaviour {
 
 
 
-    public List<GameObject> PlanetsGameObject = new List<GameObject>();
+    //public List<GameObject> PlanetsGameObject = new List<GameObject>();
     //GameObject _instantiateModels;
 
-    public void Show3DModels(int idDevice)
+    public void Show3DModels(InteractiveZone interactiveZone)
     {
-        switch (idDevice)
-        {
-            case 0:
-                break;
-                //cas
-        }
-
+       // Instantiate();
     }
 	
 }
