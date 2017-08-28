@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ModelsController : MonoBehaviour {
 
-
     public Text InfoAboytModels;
     public GameObject Plane;
     public GameObject ButtonOnModels;
