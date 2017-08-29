@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraScripts : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class CameraScripts : MonoBehaviour {
         if (backCam == null)
             backCam = new WebCamTexture();
 
-        GetComponent<Renderer>().material.mainTexture = backCam;
+        GetComponent<RawImage>().material.mainTexture = backCam;
 
         if (!backCam.isPlaying)
             backCam.Play();

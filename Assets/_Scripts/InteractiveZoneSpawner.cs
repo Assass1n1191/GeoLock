@@ -34,6 +34,8 @@ public class InteractiveZoneSpawner : MonoBehaviour
 
     private void SpawnInteractiveZone(InteractiveZone zoneInfo)
     {
+        Debug.Log(zoneInfo == null);
+
         Vector3 targetPos = Conversions.GeoToWorldPosition(
                                 zoneInfo.Latitude,
                                 zoneInfo.Longtitude,
