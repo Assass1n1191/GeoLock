@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class InteractiveZone
+//[System.Serializable]
+public class InteractiveZone : MonoBehaviour
 {
     public int Id;
     public string Name;
@@ -11,7 +11,8 @@ public class InteractiveZone
     public double Longtitude;
     public float Rotation;
     public string Description;
-    public GameObject Model;
+    public string ModelLink;
+    public string TextureLink;
 
     public InteractiveZone()
     {
@@ -21,14 +22,32 @@ public class InteractiveZone
         Longtitude = 0;
         Rotation = 0;
         Description = "No description";
-        Model = null;
+        ModelLink = "";
+        TextureLink = "";
     }
 
-    public InteractiveZone(int id, double latitude, double longtitude, float rotation, string description, GameObject model)
+    public InteractiveZone(int id, string name, double latitude, double longtitude, float rotation, 
+                           string description, string modelLink, string textureLink)
     {
         Id = id;
+        Name = name;
         Latitude = latitude;
         Longtitude = longtitude;
         Rotation = rotation;
+        Description = description;
+        ModelLink = modelLink;
+        TextureLink = textureLink;
+    }
+
+    public void CopyZoneInfo(InteractiveZone zone)
+    {
+        Id = zone.Id;
+        Name = zone.Name;
+        Latitude = zone.Latitude;
+        Longtitude = zone.Longtitude;
+        Rotation = zone.Rotation;
+        Description = zone.Description;
+        ModelLink = zone.ModelLink;
+        TextureLink = zone.TextureLink;
     }
 }

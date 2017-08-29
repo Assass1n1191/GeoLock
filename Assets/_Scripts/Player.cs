@@ -31,9 +31,9 @@ public class Player : MonoBehaviour
         if (_isInInteractiveZone) return;
 
         NotificationManager.SendWithAppIcon(new System.TimeSpan(0, 0, 0, 1), "Holy Shit!", "You arrived to an interactive zone!", Color.black);
-        CurrentZone = collider.gameObject.GetComponent<InteractiveZone>();
+        CurrentZone = collider.gameObject.transform.parent.GetComponent<InteractiveZone>();
 
-        ModelsController.Instance.SetOnButton(true);
+        MainController.Instance.SetOnButton(true);
         _isInInteractiveZone = true;
 
         //Debug.Log("Arrived");
@@ -41,7 +41,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        ModelsController.Instance.SetOnButton(false);
+        MainController.Instance.TurnModelOff();
+        MainController.Instance.SetOnButton(false);
         CurrentZone = null;
         _isInInteractiveZone = false;
     }
