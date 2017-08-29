@@ -12,7 +12,7 @@ public class CameraScripts : MonoBehaviour {
         if (backCam == null)
             backCam = new WebCamTexture();
 
-        GetComponent<RawImage>().material.mainTexture = backCam;
+        GetComponent<MeshRenderer>().material.mainTexture = backCam;
 
         if (!backCam.isPlaying)
             backCam.Play();
