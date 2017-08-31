@@ -7,6 +7,13 @@ public class MainController : MonoBehaviour {
 
     public static MainController Instance;
 
+
+    public GameObject MainCamera;
+    public GameObject ARCamera;
+    public GameObject PLWEBCAM;
+
+
+    public Text PlaneRotateDebug;
     public Text InfoAboutModels;
     public GameObject CameraTexture;
     public GameObject ButtonOnModels;
@@ -31,6 +38,9 @@ public class MainController : MonoBehaviour {
     {
         InteractiveZone interactiveZone = Player.Instance.CurrentZone;
 
+
+        ARCamera.SetActive(true);
+        MainCamera.SetActive(false);
         ButtonOnModels.SetActive(false);
         ButtonOffModels.SetActive(true);
         CameraTexture.SetActive(true);
@@ -41,7 +51,9 @@ public class MainController : MonoBehaviour {
 
         objReader.StartCoroutine(objReader.SomeFunction("Object for Model"));
 
-       //_instantiateModels = Instantiate(interactiveZone.Model);
+        //_instantiateModels = Instantiate(interactiveZone.Model);
+
+        PlaneRotateDebug.text = PLWEBCAM.transform.rotation.ToString();
     }
 
     public void TurnModelOff()
@@ -51,6 +63,9 @@ public class MainController : MonoBehaviour {
 
         //Destroy(_instantiateModels);
         //ButtonOnModels.SetActive(true);
+
+        ARCamera.SetActive(false);
+        MainCamera.SetActive(true);
         ButtonOffModels.SetActive(false);
         ObjectForModel.SetActive(false);
         CameraTexture.SetActive(false);
