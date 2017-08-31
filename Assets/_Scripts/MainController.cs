@@ -7,20 +7,15 @@ public class MainController : MonoBehaviour {
 
     public static MainController Instance;
 
-
     public GameObject MainCamera;
     public GameObject ARCamera;
-    public GameObject PLWEBCAM;
 
-
-    public Text PlaneRotateDebug;
     public Text InfoAboutModels;
     public GameObject CameraTexture;
     public GameObject ButtonOnModels;
     public GameObject ButtonOffModels;
-    //public List<GameObject> PlanetsGameObject = new List<GameObject>();
-    //GameObject _instantiateModels;
-    private objReaderCSharpV4 objReader;
+
+    private objReaderCSharpV4 _objReader;
     public GameObject ObjectForModel;
 
     private void Awake()
@@ -31,13 +26,20 @@ public class MainController : MonoBehaviour {
 
     private void Start()
     {
-        objReader = GetComponent<objReaderCSharpV4>();
+        _objReader = GetComponent<objReaderCSharpV4>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void TurnModelOn()
     {
         InteractiveZone interactiveZone = Player.Instance.CurrentZone;
-
 
         ARCamera.SetActive(true);
         MainCamera.SetActive(false);
@@ -46,23 +48,16 @@ public class MainController : MonoBehaviour {
         CameraTexture.SetActive(true);
         InfoAboutModels.text = interactiveZone.Description;
 
-        objReader._textFieldString = interactiveZone.ModelLink;
-        objReader._textureLink = interactiveZone.TextureLink;
+        _objReader._textFieldString = interactiveZone.ModelLink;
+        _objReader._textureLink = interactiveZone.TextureLink;
 
-        objReader.StartCoroutine(objReader.SomeFunction("Object for Model"));
-
-        //_instantiateModels = Instantiate(interactiveZone.Model);
-
-        PlaneRotateDebug.text = PLWEBCAM.transform.rotation.ToString();
+        _objReader.StartCoroutine(_objReader.SomeFunction("Object for Model"));
     }
 
     public void TurnModelOff()
     {
         if (Player.Instance.CurrentZone != null)
             ButtonOnModels.gameObject.SetActive(true);
-
-        //Destroy(_instantiateModels);
-        //ButtonOnModels.SetActive(true);
 
         ARCamera.SetActive(false);
         MainCamera.SetActive(true);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,10 @@ public class Player : MonoBehaviour
 
     public InteractiveZone CurrentZone;
     private bool _isInInteractiveZone = false;
+
+    private DateTime _lastZoneEnterTime;
+    private double _pushMessageDelay = 60; //In seconds
+    private string _lastZoneName = "";
 
 	private void Awake () 
 	{
@@ -28,22 +33,43 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (_isInInteractiveZone) return;
+        //if (_isInInteractiveZone) return;
 
-        NotificationManager.SendWithAppIcon(new System.TimeSpan(0, 0, 0, 1), "Holy Shit!", "You arrived to an interactive zone!", Color.black);
-        CurrentZone = collider.gameObject.transform.parent.GetComponent<InteractiveZone>();
+        if (CurrentZone == null) //If null there is first zone entered
+        {
+            _lastZoneEnterTime = DateTime.Now;
+            CurrentZone = collider.gameObject.transform.parent.GetComponent<InteractiveZone>();
+            _lastZoneName = CurrentZone.Name;
+
+            NotificationManager.SendWithAppIcon(TimeSpan.Zero, CurrentZone.Name + " is near!",
+                CurrentZone.Description, Color.black);
+        }
+        else
+        {
+            TimeSpan timeFromLastZone = DateTime.Now.Subtract(_lastZoneEnterTime);
+            CurrentZone = collider.gameObject.transform.parent.GetComponent<InteractiveZone>();
+
+            Debug.Log(timeFromLastZone.TotalSeconds);
+
+            if (timeFromLastZone.TotalSeconds > _pushMessageDelay || CurrentZone.Name != _lastZoneName)
+            {
+                NotificationManager.SendWithAppIcon(TimeSpan.Zero, CurrentZone.Name + " is near!",
+                    CurrentZone.Description, Color.black);
+            }
+
+            _lastZoneEnterTime = DateTime.Now;
+            _lastZoneName = CurrentZone.Name;
+        }
 
         MainController.Instance.SetOnButton(true);
         _isInInteractiveZone = true;
-
-        //Debug.Log("Arrived");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        MainController.Instance.TurnModelOff();
+        //MainController.Instance.TurnModelOff();
         MainController.Instance.SetOnButton(false);
-        CurrentZone = null;
-        _isInInteractiveZone = false;
+        //CurrentZone = null;
+        //_isInInteractiveZone = false;
     }
 }
