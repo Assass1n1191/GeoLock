@@ -14,6 +14,7 @@ public class CameraScripts : MonoBehaviour {
             backCam = new WebCamTexture();
 
         GetComponent<MeshRenderer>().material.mainTexture = backCam;
+        
 
         if (!backCam.isPlaying)
             backCam.Play();
@@ -32,7 +33,4 @@ public class CameraScripts : MonoBehaviour {
         //#endif
 
     }
-
-   
-
 }
