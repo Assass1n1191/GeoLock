@@ -93,7 +93,7 @@ public class objReaderCSharpV4 : MonoBehaviour {
 	public IEnumerator SomeFunction(string gameObjectName) {
         //GameObject obj_gameobject = GameObject.Find(gameObjectName);
         GameObject obj_gameobject = MainController.Instance.ObjectForModel;
-        //Debug.Log("started parsing the obj...");
+        Debug.Log("started parsing the obj...");
         initArrayLists();
 		// re-initialize the mesh and name it
 		if (_myMesh != null)
