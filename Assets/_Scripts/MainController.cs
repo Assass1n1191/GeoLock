@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Mapbox.Unity.Map;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class MainController : MonoBehaviour {
 
     private objReaderCSharpV4 _objReader;
     public GameObject ObjectForModel;
+    public GameObject Map;
 
     private void Awake()
     {
@@ -27,6 +29,8 @@ public class MainController : MonoBehaviour {
     private void Start()
     {
         _objReader = GetComponent<objReaderCSharpV4>();
+        Map.gameObject.GetComponent<AbstractMap>().enabled = true;
+
     }
 
     private void Update()

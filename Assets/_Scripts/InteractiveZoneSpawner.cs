@@ -14,17 +14,20 @@ public class InteractiveZoneSpawner : MonoBehaviour
 	private void Awake () 
 	{
         InteractiveZones = new List<InteractiveZone>();
+        _map.OnInitialized += InitDefaultZones;
 
     }
 
     private void Start () 
 	{
         //objReader = GetComponent<objReaderCSharpV4>();
-        _map.OnInitialized += InitDefaultZones;
+        
     }
 
     private void InitDefaultZones()
     {
+
+        Debug.Log("INit default");
         //InteractiveZones.Add(new InteractiveZone(0, 49.443733, 32.056695, 100f)); //BidOn
         //InteractiveZones.Add(new InteractiveZone(1, 49.44333, 32.05922, 0f)); //Ferma
 
